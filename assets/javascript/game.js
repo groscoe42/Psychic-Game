@@ -18,6 +18,7 @@ console.log("C: " + compChoice);
 
 document.onkeyup = function (_event) {
 
+
     var userGuess = _event.key;
     
     if (userGuess == "a" || userGuess == "b" || userGuess == "c" || userGuess == "d" || userGuess == "e" || userGuess == "f" || userGuess == "g" || userGuess == "h" || userGuess == "i" || userGuess == "j" ||
@@ -34,30 +35,31 @@ document.onkeyup = function (_event) {
             compChoice = choices[Math.floor(Math.random() * choices.length)];
             remain = 10;
             rShow.textContent = remain;
-            gShow.textcontent = "No Guesses Yet.";
+            $("#iGuess").empty();
+            console.log("C: " + compChoice);
         }
 
         else {
             // display guess
             remain--;
             rShow.textContent = remain;
-            var nGuess = $("<p>");
-            nGuess.text(userGuess);
-            $("#iGuess").append(nGuess);
+            $("#iGuess").append(userGuess + ", ");
             console.log("r " + remain);
 
             if (remain === 0) {
 
                 rShow.textContent = remain;
-                alert("So close! The letter was " + answer + " !");
                 losses++;
                 lShow.textContent = losses;
+                alert("So close! The letter was " + answer + " !");
                 console.log("l " + losses);
                 // reset
                 compChoice = choices[Math.floor(Math.random() * choices.length)];
                 remain = 10;
                 rShow.textContent = remain;
-                gShow.textcontent = "No Guesses Yet.";
+                $("#iGuess").empty();
+
+                console.log("C: " + compChoice);
             };
         };
 
