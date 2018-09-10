@@ -27,7 +27,7 @@ document.onkeyup = function (_event) {
             console.log("g: " + userGuess)
         if (userGuess == compChoice) {
 
-            // alert("Correct! The letter was " + answer + " !");
+            alert("Correct! The letter was " + answer + " !");
             wins++;
             wShow.textContent = wins;
             console.log("w " + wins);
@@ -52,17 +52,20 @@ document.onkeyup = function (_event) {
                 rShow.textContent = remain;
                 losses++;
                 lShow.textContent = losses;
-                // alert("So close! The letter was " + answer + " !");
-                console.log("l " + losses);
-                // reset
-                compChoice = choices[Math.floor(Math.random() * choices.length)];
-                answer = compChoice;
-                remain = 10;
-                rShow.textContent = remain;
-                $("#iGuess").empty();
-
-                console.log("C: " + compChoice);
-            };
+                window.requestAnimationFrame(() => {
+                  setTimeout(() => {
+                    alert("So close! The letter was " + answer + " !");
+                    console.log("l " + losses);
+                    // reset
+                    compChoice = choices[Math.floor(Math.random() * choices.length)];
+                    remain = 10;
+                    rShow.textContent = remain;
+                    $("#iGuess").empty();
+              
+                    console.log("C: " + compChoice);
+                  });
+                });
+              }
         };
 
     }
