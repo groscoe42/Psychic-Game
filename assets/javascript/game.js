@@ -15,11 +15,10 @@ var rShow = document.getElementById("r");
 var gShow = document.getElementById("iGuess");
 
 console.log("C: " + compChoice);
-rShow.textContent = remain;
 
 document.onkeyup = function (_event) {
 
-
+    
     var userGuess = _event.key;
     
     if (userGuess == "a" || userGuess == "b" || userGuess == "c" || userGuess == "d" || userGuess == "e" || userGuess == "f" || userGuess == "g" || userGuess == "h" || userGuess == "i" || userGuess == "j" ||
@@ -28,12 +27,13 @@ document.onkeyup = function (_event) {
             console.log("g: " + userGuess)
         if (userGuess == compChoice) {
 
-            alert("Correct! The letter was " + answer + " !");
+            // alert("Correct! The letter was " + answer + " !");
             wins++;
             wShow.textContent = wins;
             console.log("w " + wins);
             // reset
             compChoice = choices[Math.floor(Math.random() * choices.length)];
+            answer = compChoice;
             remain = 10;
             rShow.textContent = remain;
             $("#iGuess").empty();
@@ -52,10 +52,11 @@ document.onkeyup = function (_event) {
                 rShow.textContent = remain;
                 losses++;
                 lShow.textContent = losses;
-                alert("So close! The letter was " + answer + " !");
+                // alert("So close! The letter was " + answer + " !");
                 console.log("l " + losses);
                 // reset
                 compChoice = choices[Math.floor(Math.random() * choices.length)];
+                answer = compChoice;
                 remain = 10;
                 rShow.textContent = remain;
                 $("#iGuess").empty();
