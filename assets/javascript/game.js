@@ -15,6 +15,7 @@ var rShow = document.getElementById("r");
 var gShow = document.getElementById("iGuess");
 
 console.log("C: " + compChoice);
+rShow.textContent = remain;
 
 document.onkeyup = function (_event) {
 
